@@ -26,7 +26,8 @@
               content: 'Hello World',
               children: [{
                 id: 2,
-                content: 'Child of 1',
+                content: 'Child of 1 **strong**',
+                focused: true,
                 children: [{
                   id: 3,
                   content: 'Sub-Child of 2',
