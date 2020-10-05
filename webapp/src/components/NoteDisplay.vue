@@ -30,7 +30,7 @@
                 focused: true,
                 children: [{
                   id: 3,
-                  content: 'Sub-Child of 2',
+                  content: 'Sub-Child of 2 **strong too**',
                   children: []
                 }]
               }]
