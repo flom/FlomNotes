@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1>{{ note.title }}</h1>
+    <button class="button" @click="printOut()">debug</button>
     <div v-for="child in note.children" v-bind:key="child.id">
-      <entry-display :entry="child"></entry-display>
+      <entry-display :entry="child" @unfocus="unfocus($event)"></entry-display>
     </div>
   </div>
 </template>
@@ -27,7 +28,6 @@
               children: [{
                 id: 2,
                 content: 'Child of 1 **strong**',
-                focused: true,
                 children: [{
                   id: 3,
                   content: 'Sub-Child of 2 **strong too**',
@@ -42,6 +42,24 @@
             }
           ]
         }
+      }
+    },
+    methods: {
+      unfocus(sourceEntryId) {
+        console.log('unfocus', sourceEntryId);
+        /*
+        let queue = this.note.children;
+        while (queue.length > 0) {
+          const entry = queue.splice(0, 1);
+          if (entry.id !== sourceEntryId) {
+            entry.focused = false;
+          }
+          queue = queue.concat(entry.children);
+        }
+         */
+      },
+      printOut() {
+        console.log(this.note);
       }
     }
   }

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <textarea v-if="entry.focused" v-model="content"></textarea>
-    <div v-if="!entry.focused" v-html="renderedContent"></div>
+    <textarea v-if="entry.focused" v-model="this.currentEntry.content"></textarea>
+    <div v-if="!entry.focused" v-html="renderedContent" @click="editContent()"></div>
     <div style="padding-left: 15px">
-      <entry-display v-for="child in entry.children" v-bind:key="child.id" :entry="child"></entry-display>
+      <entry-display v-for="child in entry.children" v-bind:key="child.id" :entry="child" @unfocus="unfocus($event)"></entry-display>
     </div>
   </div>
 </template>
@@ -18,12 +18,21 @@ export default {
   },
   data() {
     return {
-      content: this.entry.content
+      currentEntry: this.entry
     }
   },
   computed: {
     renderedContent() {
-      return marked(this.content);
+      return marked(this.currentEntry.content);
+    }
+  },
+  methods: {
+    editContent() {
+      this.currentEntry.focused = true;
+      this.$emit('unfocus', this.currentEntry.id);
+    },
+    unfocus(sourceEntryId) {
+      this.$emit('unfocus', sourceEntryId);
     }
   }
 }
