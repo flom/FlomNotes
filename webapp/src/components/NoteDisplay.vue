@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <h1>{{ note.title }}</h1>
+  <div style="border: 1px solid black;">
+    <h1>{{ page.title }}</h1>
     <button class="button" @click="printOut()">debug</button>
-    <div v-for="child in note.children" v-bind:key="child.id">
-      <entry-display :entry="child" @unfocus="unfocus($event)"></entry-display>
+    <div v-for="child in page.children" v-bind:key="child.id">
+      <entry-display :entry="child" @entry-focused="entryFocused($event)"></entry-display>
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@
     },
     data() {
       return {
-        note: {
+        page: {
           id: 1,
           title: 'Note Header',
           children: [
@@ -45,21 +45,19 @@
       }
     },
     methods: {
-      unfocus(sourceEntryId) {
-        console.log('unfocus', sourceEntryId);
-        /*
-        let queue = this.note.children;
-        while (queue.length > 0) {
-          const entry = queue.splice(0, 1);
-          if (entry.id !== sourceEntryId) {
-            entry.focused = false;
-          }
-          queue = queue.concat(entry.children);
-        }
-         */
+      entryFocused(sourceEntryId) {
+        this.page.children.forEach((child) => {
+          this.setEntryFocus(child, sourceEntryId);
+        })
+      },
+      setEntryFocus(entry, focusedEntryId) {
+        entry.focused = entry.id === focusedEntryId;
+        entry.children.forEach((child) => {
+          this.setEntryFocus(child, focusedEntryId);
+        });
       },
       printOut() {
-        console.log(this.note);
+        console.log(this.page);
       }
     }
   }

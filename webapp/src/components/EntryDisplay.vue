@@ -1,9 +1,11 @@
 <template>
   <div>
-    <textarea v-if="entry.focused" v-model="this.currentEntry.content"></textarea>
-    <div v-if="!entry.focused" v-html="renderedContent" @click="editContent()"></div>
+    <textarea v-if="entry.focused" v-model="this.currentEntry.content" ref="ta"
+              @keyup="autoheight($event)"></textarea>
+    <div v-if="!entry.focused" v-html="renderedContent" @click="focusEntry()"></div>
     <div style="padding-left: 15px">
-      <entry-display v-for="child in entry.children" v-bind:key="child.id" :entry="child" @unfocus="unfocus($event)"></entry-display>
+      <entry-display v-for="child in entry.children" v-bind:key="child.id" :entry="child"
+                     @entry-focused="$emit('entry-focused', $event)"></entry-display>
     </div>
   </div>
 </template>
@@ -27,17 +29,27 @@ export default {
     }
   },
   methods: {
-    editContent() {
-      this.currentEntry.focused = true;
-      this.$emit('unfocus', this.currentEntry.id);
+    focusEntry() {
+      this.$emit('entry-focused', this.currentEntry.id);
     },
-    unfocus(sourceEntryId) {
-      this.$emit('unfocus', sourceEntryId);
+    autoheight(x) {
+      this.$refs.ta.style.height = "5px";
+      this.$refs.ta.style.height = (15 + x.scrollHeight) + "px";
+    }
+  },
+  updated() {
+    if (this.$refs.ta) {
+      this.$refs.ta.focus();
     }
   }
 }
 </script>
 
 <style scoped>
-
+textarea {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+}
 </style>
