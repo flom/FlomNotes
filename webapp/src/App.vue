@@ -20,15 +20,23 @@
             <div class="top-bar-left">
               <ul class="dropdown menu" data-dropdown-menu>
                 <li class="menu-text">FlomNotes</li>
-                <li><router-link to="/">Home</router-link></li>
-                <li><router-link to="/page">Pages</router-link></li>
-                <li><router-link to="/about">About</router-link></li>
+                <li>
+                  <router-link to="/">Home</router-link>
+                </li>
+                <li>
+                  <router-link to="/page">Pages</router-link>
+                </li>
+                <li>
+                  <router-link to="/about">About</router-link>
+                </li>
               </ul>
             </div>
             <div class="top-bar-right">
               <ul class="menu">
                 <li><input type="search" placeholder="Search"></li>
-                <li><button type="button" class="button">Search</button></li>
+                <li>
+                  <button type="button" class="button">Search</button>
+                </li>
               </ul>
             </div>
           </div>
@@ -44,17 +52,17 @@
 </template>
 
 <script>
-  import { RouterLink } from 'vue-router';
+import { RouterLink } from 'vue-router';
 
-  export default {
-    name: 'App',
-    components: {
-      RouterLink
-    }
+export default {
+  name: 'App',
+  components: {
+    RouterLink
   }
+}
 </script>
 
 <style>
-  #app {
-  }
+#app {
+}
 </style>

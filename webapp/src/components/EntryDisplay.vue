@@ -6,7 +6,8 @@
       <textarea v-if="entry.focused" v-model="this.currentEntry.content" ref="ta"
                 @keyup="autoheight($event)"></textarea>
 
-      <div v-if="!entry.focused" v-html="renderedContent" @click="focusEntry()"></div>
+      <div v-if="!entry.focused" v-html="renderedContent" @click="focusEntry()"
+           class="rendered-content"></div>
     </div>
 
     <div class="children">
@@ -38,9 +39,9 @@ export default {
     focusEntry() {
       this.$emit('entry-focused', this.currentEntry.id);
     },
-    autoheight(x) {
-      this.$refs.ta.style.height = "5px";
-      this.$refs.ta.style.height = (15 + x.scrollHeight) + "px";
+    autoheight() {
+      // this.$refs.ta.style.height = "5px";
+      // this.$refs.ta.style.height = (15 + x.scrollHeight) + "px";
     }
   },
   updated() {
@@ -73,6 +74,14 @@ textarea {
   margin-right: 5px;
   padding-top: 1.5em;
   font-size: 0.4em;
+}
+
+.rendered-content {
+  margin-bottom: 5px;
+}
+
+.rendered-content >>> p {
+  margin-bottom: 0;
 }
 
 </style>

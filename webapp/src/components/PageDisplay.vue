@@ -34,13 +34,13 @@ export default {
                 children: []
               }, {
                 id: 4,
-                content: 'Another sub-Child of 2 _italic_',
+                content: 'Another sub-Child of 2 _italic_\n\nnewline',
                 children: []
               }]
             }]
           },
           {
-            id: 4,
+            id: 5,
             content: 'Second Entry',
             children: []
           }
