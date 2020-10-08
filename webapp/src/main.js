@@ -3,14 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import HelloWorld from './components/HelloWorld';
 import AboutPage from './components/AboutPage';
-import NoteDisplay from './components/NoteDisplay';
+import PageDisplay from './components/PageDisplay';
 
 import 'foundation-sites/dist/css/foundation.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const routes = [
   {path: '/', component: HelloWorld},
-  {path: '/note', component: NoteDisplay},
+  {path: '/page', component: PageDisplay},
   {path: '/about', component: AboutPage}
 ];
 

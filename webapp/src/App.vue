@@ -21,7 +21,7 @@
               <ul class="dropdown menu" data-dropdown-menu>
                 <li class="menu-text">FlomNotes</li>
                 <li><router-link to="/">Home</router-link></li>
-                <li><router-link to="/note">Notes</router-link></li>
+                <li><router-link to="/page">Pages</router-link></li>
                 <li><router-link to="/about">About</router-link></li>
               </ul>
             </div>
@@ -34,7 +34,7 @@
           </div>
 
         </div>
-        <div class="cell small-offset-2">
+        <div class="cell">
           <router-view></router-view>
         </div>
       </div>
