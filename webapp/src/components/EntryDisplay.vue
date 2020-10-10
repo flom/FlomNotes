@@ -4,7 +4,8 @@
       <i class="fas fa-circle bullet-point"></i>
 
       <textarea v-if="entry.focused" v-model="this.currentEntry.content" ref="ta"
-                @keyup="autoheight($event)"></textarea>
+                @focusout="unfocusEntry()" @keyup="onKeyUp()"
+                style="overflow: hidden; height: 30px"></textarea>
 
       <div v-if="!entry.focused" v-html="renderedContent" @click="focusEntry()"
            class="rendered-content"></div>
@@ -39,14 +40,20 @@ export default {
     focusEntry() {
       this.$emit('entry-focused', this.currentEntry.id);
     },
-    autoheight() {
-      // this.$refs.ta.style.height = "5px";
-      // this.$refs.ta.style.height = (15 + x.scrollHeight) + "px";
+    unfocusEntry() {
+      this.$emit('entry-focused', null);
+    },
+    onKeyUp() {
+      this.updateTextAreaHeight();
+    },
+    updateTextAreaHeight() {
+      this.$refs.ta.style.height = this.$refs.ta.scrollHeight + 'px';
     }
   },
   updated() {
     if (this.$refs.ta) {
       this.$refs.ta.focus();
+      this.updateTextAreaHeight();
     }
   }
 }
@@ -55,9 +62,20 @@ export default {
 <style scoped>
 textarea {
   border: none;
+  /*border: 1px solid black;*/
   outline: none;
   box-shadow: none;
   padding: 0;
+  resize: none;
+  min-height: 24px;
+  margin-bottom: 0;
+}
+
+textarea:focus {
+  outline: none;
+  border: none;
+  /*border: 1px solid black;*/
+  box-shadow: none;
 }
 
 .content {
