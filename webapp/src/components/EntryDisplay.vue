@@ -62,7 +62,6 @@ export default {
 <style scoped>
 textarea {
   border: none;
-  /*border: 1px solid black;*/
   outline: none;
   box-shadow: none;
   padding: 0;
@@ -74,7 +73,6 @@ textarea {
 textarea:focus {
   outline: none;
   border: none;
-  /*border: 1px solid black;*/
   box-shadow: none;
 }
 
@@ -83,7 +81,7 @@ textarea:focus {
 }
 
 .children {
-  padding-left: 15px;
+  padding-left: 25px;
   border-left: 1px solid lightgray;
 }
 
