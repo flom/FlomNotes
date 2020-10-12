@@ -4,6 +4,7 @@ import App from './App.vue';
 import HelloWorld from './components/HelloWorld';
 import AboutPage from './components/AboutPage';
 import PageDisplay from './components/PageDisplay';
+import store from './store/pages';
 
 import 'foundation-sites/dist/css/foundation.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -20,4 +21,4 @@ const router = createRouter({
   }
 );
 
-createApp(App).use(router).mount('#app');
+createApp(App).use(router).use(store).mount('#app');
