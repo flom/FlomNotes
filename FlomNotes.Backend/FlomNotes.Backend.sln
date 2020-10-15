@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlomNotes.Backend.WebApi", "FlomNotes.Backend.WebApi\FlomNotes.Backend.WebApi.csproj", "{6095C928-1F96-4DB4-B376-AC1265DB0AC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlomNotes.Backend.Model", "FlomNotes.Backend.Model\FlomNotes.Backend.Model.csproj", "{772A2B11-F722-4A90-9DAB-BA3779ED2D01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlomNotes.Backend.RoamImporter", "FlomNotes.Backend.RoamImporter\FlomNotes.Backend.RoamImporter.csproj", "{CC064158-D6C6-4A27-B55D-ADB249670BD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{6095C928-1F96-4DB4-B376-AC1265DB0AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6095C928-1F96-4DB4-B376-AC1265DB0AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6095C928-1F96-4DB4-B376-AC1265DB0AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{772A2B11-F722-4A90-9DAB-BA3779ED2D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{772A2B11-F722-4A90-9DAB-BA3779ED2D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{772A2B11-F722-4A90-9DAB-BA3779ED2D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{772A2B11-F722-4A90-9DAB-BA3779ED2D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC064158-D6C6-4A27-B55D-ADB249670BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC064158-D6C6-4A27-B55D-ADB249670BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC064158-D6C6-4A27-B55D-ADB249670BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC064158-D6C6-4A27-B55D-ADB249670BD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
