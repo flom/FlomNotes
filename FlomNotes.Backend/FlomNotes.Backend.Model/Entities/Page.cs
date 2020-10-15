@@ -5,11 +5,9 @@ namespace FlomNotes.Backend.Model.Entities
 {
     public class Page
     {
-        public long Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Title { get; set; }
-
-        public string NormalizedTitle { get; set; }
 
         public DateTime CreationTime { get; set; }
 
@@ -17,6 +15,6 @@ namespace FlomNotes.Backend.Model.Entities
 
         public bool IsShortcut { get; set; }
 
-        public List<Entry> Entries { get; set; }
+        public List<Entry> Entries { get; set; } = new List<Entry>();
     }
 }
