@@ -74,7 +74,7 @@ namespace FlomNotes.Backend.RoamImporter
 
             if (roamPage.Children != null)
             {
-                page.Entries = MapRoamChildrenToNoteEntries(roamPage.Children);
+                page.Entries = JsonSerializer.Serialize(MapRoamChildrenToNoteEntries(roamPage.Children));
             }
 
             return page;
@@ -84,15 +84,13 @@ namespace FlomNotes.Backend.RoamImporter
         {
             var entries = new List<Entry>();
 
-            for (int i = 0; i < roamChildren.Count; i++)
+            foreach (var child in roamChildren)
             {
-                RoamChildren child = roamChildren[i];
                 var entry = new Entry()
                 {
                     Content = child.String,
                     CreationTime = ConvertToDateTime(child.CreateTime),
-                    EditTime = ConvertToDateTime(child.EditTime),
-                    Order = i
+                    EditTime = ConvertToDateTime(child.EditTime)
                 };
 
                 if (child.Children != null)

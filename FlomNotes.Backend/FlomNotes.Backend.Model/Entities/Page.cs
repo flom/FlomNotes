@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace FlomNotes.Backend.Model.Entities
 {
@@ -15,6 +14,6 @@ namespace FlomNotes.Backend.Model.Entities
 
         public bool IsShortcut { get; set; }
 
-        public List<Entry> Entries { get; set; } = new List<Entry>();
+        public string Entries { get; set; }
     }
 }

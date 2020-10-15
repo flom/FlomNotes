@@ -7,8 +7,6 @@ namespace FlomNotes.Backend.Model
     {
         public DbSet<Page> Pages { get; set; }
 
-        public DbSet<Entry> Entries { get; set; }
-
         public NotesContext(DbContextOptions<NotesContext> options) : base(options)
         {
         }
