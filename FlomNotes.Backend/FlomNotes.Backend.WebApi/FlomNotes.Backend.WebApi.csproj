@@ -4,5 +4,9 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FlomNotes.Backend.Model\FlomNotes.Backend.Model.csproj" />
+    </ItemGroup>
+
 
 </Project>
