@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlomNotes.Backend.Model", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlomNotes.Backend.RoamImporter", "FlomNotes.Backend.RoamImporter\FlomNotes.Backend.RoamImporter.csproj", "{CC064158-D6C6-4A27-B55D-ADB249670BD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlomNotes.Backend.WebApi.Test", "FlomNotes.Backend.WebApi.Test\FlomNotes.Backend.WebApi.Test.csproj", "{87BEC9C3-80DF-4541-A186-E8A3A928B14D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{CC064158-D6C6-4A27-B55D-ADB249670BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC064158-D6C6-4A27-B55D-ADB249670BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC064158-D6C6-4A27-B55D-ADB249670BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BEC9C3-80DF-4541-A186-E8A3A928B14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BEC9C3-80DF-4541-A186-E8A3A928B14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BEC9C3-80DF-4541-A186-E8A3A928B14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BEC9C3-80DF-4541-A186-E8A3A928B14D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
