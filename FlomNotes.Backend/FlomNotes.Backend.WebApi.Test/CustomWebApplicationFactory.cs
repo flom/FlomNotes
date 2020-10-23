@@ -7,12 +7,18 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Xunit;
 
 namespace FlomNotes.Backend.WebApi.Test
 {
     public class CustomWebApplicationFactory<TStartup>
         : WebApplicationFactory<TStartup> where TStartup : class
     {
+        protected override void Dispose(bool disposing)
+        {
+            File.Delete("test-db.db");
+        }
+
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.ConfigureServices(services =>
@@ -23,7 +29,7 @@ namespace FlomNotes.Backend.WebApi.Test
 
                 services.Remove(descriptor);
 
-                File.Delete("test-db.db");
+                // File.Delete("test-db.db");
                 services.AddDbContext<NotesContext>(options =>
                 {
                     options.UseSqlite("Data Source=test-db.db");
@@ -52,5 +58,13 @@ namespace FlomNotes.Backend.WebApi.Test
                 }
             });
         }
+    }
+    
+    [CollectionDefinition("Database collection")]
+    public class DatabaseCollection : ICollectionFixture<CustomWebApplicationFactory<Startup>>
+    {
+        // This class has no code, and is never created. Its purpose is simply
+        // to be the place to apply [CollectionDefinition] and all the
+        // ICollectionFixture<> interfaces.
     }
 }

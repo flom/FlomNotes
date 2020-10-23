@@ -14,23 +14,31 @@ namespace FlomNotes.Backend.WebApi.Test.Endpoints.PagesController
         }
         
         [Fact]
-        public async Task Test1()
+        public async Task TestGetPages()
         {
-            var client = _factory.CreateClient();
-
             using (var scope = _factory.Services.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<NotesContext>();
-                dbContext.Pages.Add(new Page());
-                dbContext.SaveChanges();
+                await dbContext.Pages.AddAsync(new Page());
+                await dbContext.SaveChangesAsync();
             }
 
-            var response = await client.GetAsync("/pages");
+            var response = await _client.GetAsync("/pages");
 
             var content = await DeserializeResponse<List<ViewModel.Page>>(response);
 
             response.EnsureSuccessStatusCode();
-            Assert.Equal(1, content.Count);
+            Assert.Single(content);
+        }
+
+        [Fact]
+        public async Task TestGetNoAvailablePages()
+        {
+            var response = await _client.GetAsync("/pages");
+            var content = await DeserializeResponse<List<ViewModel.Page>>(response);
+
+            response.EnsureSuccessStatusCode();
+            Assert.Empty(content);
         }
     }
 }
