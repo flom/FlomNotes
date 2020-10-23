@@ -14,11 +14,13 @@ namespace FlomNotes.Backend.WebApi.Test
     public class CustomWebApplicationFactory<TStartup>
         : WebApplicationFactory<TStartup> where TStartup : class
     {
-        protected override void Dispose(bool disposing)
+        private static string _testDbName = "test-db.db";
+        
+        public CustomWebApplicationFactory()
         {
-            File.Delete("test-db.db");
+            File.Delete(_testDbName);
         }
-
+        
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.ConfigureServices(services =>
@@ -29,10 +31,9 @@ namespace FlomNotes.Backend.WebApi.Test
 
                 services.Remove(descriptor);
 
-                // File.Delete("test-db.db");
                 services.AddDbContext<NotesContext>(options =>
                 {
-                    options.UseSqlite("Data Source=test-db.db");
+                    options.UseSqlite($"Data Source={_testDbName}");
                 });
 
                 var sp = services.BuildServiceProvider();
