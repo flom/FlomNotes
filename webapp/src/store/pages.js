@@ -32,6 +32,11 @@ export default createStore({
         ]
       }
     }
+  },
+  getters: {
+    numOfChildren(state) {
+      return state.page.children.length;
+    }
   }
 });
 
